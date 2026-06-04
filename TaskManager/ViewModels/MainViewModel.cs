@@ -16,8 +16,8 @@ namespace TaskManager.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private readonly Auth _authService = new Auth();
-        private readonly Task_service _taskService = new Task_service();
+        private readonly AuthServices _authService = new Auth();
+        private readonly TaskService _taskService = new Task_service();
 
         private User _currentUser;
         private TaskItem _selectedTask;
