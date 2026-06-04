@@ -9,7 +9,7 @@ using TaskManager.Models;
 
 namespace TaskManager.Services
 {
-    public class Task_service
+    public class TaskService
     {
 
         private static void Task_Parameters(SQLiteCommand command, TaskItem task)
