@@ -8,9 +8,9 @@ namespace TaskManager.Data
 {
     public class DbContext
     {
-
+        
         private static readonly ILogger _logger;
-        private static readonly string DatabaseFileName = Env.GetString("Database_name");
+        
         private static bool _initialized;
 
         static DbContext()
@@ -19,8 +19,9 @@ namespace TaskManager.Data
             LoggerSystem.LoggerInit.Initialize();
             _logger = Log.ForContext<DbContext>();
             _logger.Information(" статический конструктор выполнен");
+            Env.Load();
         }
-
+        private static readonly string DatabaseFileName = Env.GetString("Database_name") ?? "taskmanager.db";
         public static SQLiteConnection CreateConnection()
         {
             _logger.Information("попытка открыть соединение");
