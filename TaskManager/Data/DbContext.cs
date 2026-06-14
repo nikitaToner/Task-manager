@@ -2,21 +2,23 @@ using Serilog;
 using System;
 using System.Data.SQLite;
 using System.IO;
+using DotNetEnv;
 
 namespace TaskManager.Data
 {
     public class DbContext
     {
+
         private static readonly ILogger _logger;
-        private const string DatabaseFileName = "taskmanager.db";
+        private static readonly string DatabaseFileName = Env.GetString("Database_name");
         private static bool _initialized;
 
         static DbContext()
         {
             // Инициализация логгера
-            LoggerSystem.Logger.Initialize();
+            LoggerSystem.LoggerInit.Initialize();
             _logger = Log.ForContext<DbContext>();
-            _logger.Information("статический конструктор выполнен");
+            _logger.Information(" статический конструктор выполнен");
         }
 
         public static SQLiteConnection CreateConnection()
